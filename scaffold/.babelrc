@@ -1,0 +1,14 @@
+{
+  "presets": [["env", { "useBuiltIns": "entry" }]],
+  "plugins": [
+    "react-hot-loader/babel",
+    "syntax-dynamic-import",
+    ["transform-object-rest-spread", { "useBuiltIns": true }],
+    [
+      "transform-react-jsx",
+      {
+        "pragma": "wp.element.createElement"
+      }
+    ]
+  ]
+}
