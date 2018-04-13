@@ -1,3 +1,7 @@
+# Why
+
+This is a plugin boilerplate + reusable inspector components + hot loading all built in for gutenberg!
+
 # Install
 
 `npm install gutenblock`
