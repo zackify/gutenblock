@@ -1,4 +1,4 @@
-`npm install gutenblock`
+`npm install gutenblock -g`
 
 This is a plugin boilerplate + reusable inspector components + hot loading + code splits all built in for gutenberg!
 
