@@ -1,6 +1,6 @@
 <?php
 /**
- * Plugin Name: Gutenblock
+ * Plugin Name: Gutenblock by Crossfield
  * Plugin URI: https://github.com/crossfield/gutenblock
  * Description: The easiest way to create and develop gutenberg blocks
  * Author: Zach @ Crossfield

@@ -6,5 +6,8 @@ const Block = {
     title: {
       type: 'string',
     },
+    description: {
+      type: 'string',
+    },
   },
 };

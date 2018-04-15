@@ -1,12 +1,13 @@
 module.exports = function(source) {
   if (this.resource.match(/block.js/))
     return `
-    import Import from 'gutenblock/controls/import';
+    import Import from 'gutenblock-controls/dist/base/import';
     
     ${source}
 
     Block.edit = props => wp.element.createElement(Import, {...props, load: () => import('./edit')});
-    Block.save = () => ''; 
+   
+    if(!Block.save) Block.save = () => ''; 
     
     const { registerBlockType } = wp.blocks;
 

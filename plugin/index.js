@@ -1,4 +1,3 @@
-import '@babel/polyfill';
 import 'react-hot-loader';
 
 function importAll(r) {

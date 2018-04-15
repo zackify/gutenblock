@@ -1,4 +1,5 @@
 import React from 'react';
+import { Provider } from './context';
 
 export default class Import extends React.Component {
   constructor() {
@@ -15,6 +16,10 @@ export default class Import extends React.Component {
     let { component } = this.state;
     let { load, ...props } = this.props;
     if (!component) return '';
-    return React.createElement(component, { ...props });
+    return (
+      <Provider value={props}>
+        {React.createElement(component, { ...props })}
+      </Provider>
+    );
   }
 }

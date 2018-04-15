@@ -1,0 +1,20 @@
+{
+  "name": "gutenblock-example",
+  "version": "1.0.0",
+  "description": "My first gutenberg block!",
+  "main": "index.js",
+  "scripts": {
+    "test": " "
+  },
+  "repository": {
+    "type": "git",
+    "url": " "
+  },
+  "author": "Crossfield",
+  "license": "ISC",
+  "dependencies": {
+    "gutenblock-controls": "^0.0.8",
+    "react": "^16.3.1",
+    "react-hot-loader": "^4.0.1"
+  }
+}
