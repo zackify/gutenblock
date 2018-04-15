@@ -1,11 +1,10 @@
-
 # Contents
 
-- [Install](#install)
-- [Comparison with competition](#create-guten-block-vs-this)
-- [Usage](#usage)
-- [Creating a Block](#creating-a-block)
-
+* [Install](#install)
+* [Comparison with competition](#create-guten-block-vs-this)
+* [Coming Soon](#coming-soon)
+* [Usage](#usage)
+* [Creating a Block](#creating-a-block)
 
 # Install
 
@@ -78,6 +77,10 @@ Coming soon: If you need to customize our zero-config utility, you can add `dev.
 
 * Inspector tools for repeat actions (adding multiple items recursively, ex: tabs with products in each)
 * Automatic i18n
+
+* Handling the `save` method
+
+Currently, we don't use wordpress to render blocks, so we don't use this. But I will be working to make this part better if needed.
 
 # Usage
 
