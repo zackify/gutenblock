@@ -1,10 +1,13 @@
 
 # Contents
 
-- Install
+- [Install](#install)
 - [Comparison with competition](#create-guten-block-vs-this)
 - [Usage](#usage)
 - [Creating a Block](#creating-a-block)
+
+
+# Install
 
 `npm install gutenblock -g`
 
