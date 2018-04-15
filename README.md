@@ -1,3 +1,8 @@
+- Install
+- [Comparison with competition](#create-guten-block-vs-this)
+- [Usage](#usage)
+- [Creating a Block](#creating-a-block)
+
 `npm install gutenblock -g`
 
 This is a plugin boilerplate + reusable inspector components + hot loading + code splits all built in for gutenberg!
@@ -112,7 +117,3 @@ That's it, no registering blocks, importing them into a root folder. It's all do
 Now we cam run `gutenblock watch` inside our plugin folder. Inside wordpress the components will hot reload as you edit, thanks to [react-hot-loader](https://github.com/gaearon/react-hot-loader)
 
 You can read more about the [Block API](https://wordpress.org/gutenberg/handbook/block-api/)
-
-# Editing Components
-
-We included a few helper components for inspector controls. We know this is not the ideal way to edit components in gutenberg, but it is much faster for those on a time crunch like us. You can see an example using editing inside gutenberg itself without the inspector too.
