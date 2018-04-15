@@ -1,16 +1,14 @@
 module.exports = {
-  presets: [
-    [__dirname + '/../node_modules/babel-preset-env', { useBuiltIns: 'entry' }],
-  ],
+  presets: [[require.resolve('babel-preset-env'), { useBuiltIns: 'entry' }]],
   plugins: [
-    __dirname + '/../node_modules/react-hot-loader/babel',
-    __dirname + '/../node_modules/babel-plugin-syntax-dynamic-import',
+    require.resolve('react-hot-loader/babel'),
+    require.resolve('babel-plugin-syntax-dynamic-import'),
     [
-      __dirname + '/../node_modules/babel-plugin-transform-object-rest-spread',
+      require.resolve('babel-plugin-transform-object-rest-spread'),
       { useBuiltIns: true },
     ],
     [
-      __dirname + '/../node_modules/babel-plugin-transform-react-jsx',
+      require.resolve('babel-plugin-transform-react-jsx'),
       {
         pragma: 'wp.element.createElement',
       },

@@ -12,6 +12,7 @@ export default class Import extends React.Component {
 
     this.setState({ component: component.default });
   }
+  
   render() {
     let { component } = this.state;
     let { load, ...props } = this.props;
