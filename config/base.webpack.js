@@ -34,7 +34,7 @@ module.exports = ({ publicPath, production, serve, babelOptions }) => {
           exclude: /node_modules/,
           use: [
             {
-              loader: '../loader',
+              loader: 'gutenblock-loader',
             },
             {
               loader: 'babel-loader',
