@@ -1,6 +1,6 @@
 {
   "name": "gutenblock",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "",
   "main": "index.js",
   "scripts": {
@@ -19,11 +19,14 @@
     "babel-plugin-transform-object-rest-spread": "^6.26.0",
     "babel-plugin-transform-react-jsx": "^6.24.1",
     "babel-preset-env": "^1.6.1",
-    "gutenblock-loader": "0.0.6",
+    "gutenblock-loader": "0.0.7",
     "ncp": "^2.0.0",
     "react-hot-loader": "^4.0.1",
     "webpack": "^4.5.0",
     "webpack-serve": "^0.3.1"
   },
-  "keywords": ["Gutenberg", "Wordpress"]
+  "keywords": [
+    "Gutenberg",
+    "Wordpress"
+  ]
 }
