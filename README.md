@@ -10,7 +10,11 @@
 
 `npm install gutenblock -g`
 
-This is a plugin boilerplate + reusable inspector components + hot loading + code splits all built in for gutenberg!
+This is a plugin boilerplate + reusable inspector components + hot loading + code splits all built in for gutenberg.
+
+# Quickstart
+
+Follow this guide that [@ericclemmons](http://github.com/ericclemmons) wrote while watching the tutorial video I made https://gist.github.com/ericclemmons/e6b3563e5d8fb0f3b9e55f67dea455e9. It will get you creating a block within a few minutes.
 
 # create-guten-block vs this
 
