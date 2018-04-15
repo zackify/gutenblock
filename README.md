@@ -1,3 +1,6 @@
+
+# Contents
+
 - Install
 - [Comparison with competition](#create-guten-block-vs-this)
 - [Usage](#usage)
