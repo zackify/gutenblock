@@ -1,3 +1,7 @@
 import { RichText } from 'gutenblock-controls';
 
-const Edit = () => <div>hi</div>;
+const Edit = () => (
+  <div>
+    <RichText name="title" />
+  </div>
+);
