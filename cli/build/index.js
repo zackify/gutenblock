@@ -13,7 +13,7 @@ module.exports = () => {
     customConfig: loadCustomConfig(),
     production: true,
   });
-
+  delete customConfig.serve;
   console.log('Building...');
 
   webpack(customConfig, (err, stats) => {
