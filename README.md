@@ -139,8 +139,8 @@ export default ({ attributes }) => <p>{attributes.body}</p>;
 
 Side note: We don't use save blocks at Crossfield. This is because we fetch wordpress pages and posts via the api and render the blocks using a custom react frontend. Sadly, if you use save blocks, they will not be code split. This is a limitation of the gutenberg editor not supporting awaiting to render the save method.
 
-Well that's it, no registering blocks, importing them into a root folder. It's all done for you.
+No registering blocks, importing them into a root folder. It's all done for you.
 
-Now we cam run `gutenblock watch` inside our plugin folder. Inside wordpress the components will hot reload as you edit, thanks to [react-hot-loader](https://github.com/gaearon/react-hot-loader)
+Now we can run `gutenblock watch` inside our plugin folder. Inside wordpress the components will hot reload as you edit, thanks to [react-hot-loader](https://github.com/gaearon/react-hot-loader)
 
 You can read more about the [Block API](https://wordpress.org/gutenberg/handbook/block-api/)
