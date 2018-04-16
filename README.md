@@ -14,7 +14,13 @@ This is a plugin boilerplate + reusable inspector components + hot loading + cod
 
 # Quickstart
 
-Follow this guide that [@ericclemmons](http://github.com/ericclemmons) wrote while watching the tutorial video I made https://gist.github.com/ericclemmons/e6b3563e5d8fb0f3b9e55f67dea455e9. It will get you creating a block within a few minutes.
+If you have never done WordPress development, getting started couldn't be easier.
+
+* [Install Docker](https://store.docker.com/search?type=edition&offering=community)
+* `gutenblock init && cd blocks`
+* `gutenblock watch docker`
+
+When you add `docker` on the end of the watch command, it will bring up WordPress for you. Simply create an account, install the Gutenberg plugin, and activate the blocks plugin. You're all set.
 
 # create-guten-block vs this
 
@@ -26,7 +32,7 @@ Follow this guide that [@ericclemmons](http://github.com/ericclemmons) wrote whi
 | Automated Attribute changing           | No  |          Yes |
 | Automatic code splitting               | No  |          Yes |
 | Hot reloading (without page reload)    | No  |          Yes |
-| Custom webpack config without ejection | No  |         Soon |
+| Custom webpack config without ejection | No  |          Yes |
 
 **Auto Block registration**
 
@@ -75,7 +81,29 @@ Every edit block is hooked into react-hot-loader with our loader so that updates
 
 **Custom Webpack**
 
-Coming soon: If you need to customize our zero-config utility, you can add `dev.config.js` and `prod.config.js` to your plugin folder and it will be used instead of ours.
+Add a `gutenblock.config.js` file in your blocks folder. It looks like this:
+
+```js
+const path = require('path');
+
+module.exports = {
+  resolve: {
+    alias: {
+      shared: path.resolve(__dirname, '../src/shared'),
+    },
+  },
+  module: {
+    rules: [
+      {
+        test: /\.css$/,
+        use: [require.resolve('style-loader'), require.resolve('css-loader')],
+      },
+    ],
+  },
+};
+```
+
+The configuration is the exact same as webpack with one extra piece: pass `babelOptions` with plugins and presets like a babelrc has to customize the babel loader.
 
 # Coming Soon
 

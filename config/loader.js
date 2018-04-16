@@ -1,7 +1,7 @@
 module.exports = function(source) {
   if (this.resource.match(/block.js/))
     return `
-    import Import from 'gutenblock-controls/dist/base/import';
+    import { Import } from 'gutenblock-controls';
     
     ${source}
 

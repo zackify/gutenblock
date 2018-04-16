@@ -1,7 +1,7 @@
 const fs = require('fs');
 const webpack = require('webpack');
-const config = require('../../config/base.webpack.js');
-const babelOptions = require('../../config/babel-options');
+const config = require('../../config/base.webpack');
+const loadCustomConfig = require('../../config/load-custom-config');
 
 module.exports = () => {
   if (!fs.existsSync(process.cwd() + '/./src')) {
@@ -9,8 +9,10 @@ module.exports = () => {
       'Please make sure you are in the gutenblock directory :)'
     );
   }
-  let customConfig = config({ babelOptions, production: true });
-  delete customConfig.serve;
+  let customConfig = config({
+    customConfig: loadCustomConfig(),
+    production: true,
+  });
 
   console.log('Building...');
 

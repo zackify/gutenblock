@@ -1,5 +1,3 @@
-import 'react-hot-loader';
-
 function importAll(r) {
   r.keys().forEach(r);
 }
