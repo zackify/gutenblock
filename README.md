@@ -81,6 +81,7 @@ Coming soon: If you need to customize our zero-config utility, you can add `dev.
 
 * Inspector tools for repeat actions (adding multiple items recursively, ex: tabs with products in each)
 * Automatic i18n
+* Complicated examples (tabs component, loading in data from wordpress)
 
 * Handling the `save` method
 
@@ -103,6 +104,10 @@ All blocks need a `block.js` and `edit.js`.
 `./src/paragraph/block.js`
 
 ```js
+//Optionally use a save block for static rendering on the wordpress frontend
+
+import Save from './save';
+
 const Block = {
   title: 'Paragraph',
   icon: 'shield-alt',
@@ -112,6 +117,7 @@ const Block = {
       type: 'string',
     },
   },
+  save: Save,
 };
 ```
 
@@ -125,7 +131,15 @@ const Edit = () => (
 );
 ```
 
-That's it, no registering blocks, importing them into a root folder. It's all done for you!
+`./src/paragraph/save.js`
+
+```js
+export default ({ attributes }) => <p>{attributes.body}</p>;
+```
+
+Side note: We don't use save blocks at Crossfield. This is because we fetch wordpress pages and posts via the api and render the blocks using a custom react frontend. Sadly, if you use save blocks, they will not be code split. This is a limitation of the gutenberg editor not supporting awaiting to render the save method.
+
+Well that's it, no registering blocks, importing them into a root folder. It's all done for you.
 
 Now we cam run `gutenblock watch` inside our plugin folder. Inside wordpress the components will hot reload as you edit, thanks to [react-hot-loader](https://github.com/gaearon/react-hot-loader)
 
