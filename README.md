@@ -112,8 +112,6 @@ The configuration is the exact same as webpack with one extra piece: pass `babel
 * Test coverage
 * Batch updates when updating nested tabs that cause lots of rerenders in Gutenberg
 
-Currently, we don't use wordpress to render blocks, so we don't use this. But I will be working to make this part better if needed.
-
 # Usage
 
 `gutenblock init` will scaffold out a wordpress plugin for you.
