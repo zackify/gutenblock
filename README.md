@@ -107,7 +107,6 @@ The configuration is the exact same as webpack with one extra piece: pass `babel
 
 # Future plans
 
-* Inspector tools for repeat actions (adding multiple items recursively, ex: tabs with products in each)
 * Automatic i18n
 * Complicated examples (tabs component, loading in data from wordpress)
 * Test coverage
