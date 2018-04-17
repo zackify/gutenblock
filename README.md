@@ -105,13 +105,13 @@ module.exports = {
 
 The configuration is the exact same as webpack with one extra piece: pass `babelOptions` with plugins and presets like a babelrc has to customize the babel loader.
 
-# Coming Soon
+# Future plans
 
 * Inspector tools for repeat actions (adding multiple items recursively, ex: tabs with products in each)
 * Automatic i18n
 * Complicated examples (tabs component, loading in data from wordpress)
-
-* Handling the `save` method
+* Test coverage
+* Batch updates when updating nested tabs that cause lots of rerenders in Gutenberg
 
 Currently, we don't use wordpress to render blocks, so we don't use this. But I will be working to make this part better if needed.
 

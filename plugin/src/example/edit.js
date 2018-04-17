@@ -1,7 +1,17 @@
+import Inspector from './inspector';
+import Tabs from './components/tabs';
 import { RichText } from 'gutenblock-controls';
 
-const Edit = () => (
+const Edit = ({ attributes }) => (
   <div>
-    <RichText name="title" />
+    <div>
+      <RichText
+        tagName="h1"
+        name="title"
+        placeholder="Section Title: Add tabs to the right ->"
+      />
+    </div>
+    <Tabs tabs={attributes.tabs} />
+    <Inspector />
   </div>
 );

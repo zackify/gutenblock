@@ -6,8 +6,9 @@ const Block = {
     title: {
       type: 'string',
     },
-    description: {
-      type: 'string',
+    tabs: {
+      type: 'array',
+      default: [],
     },
   },
 };
