@@ -2,7 +2,7 @@
 
 * [Install](#install)
 * [Comparison with competition](#create-guten-block-vs-this)
-* [Coming Soon](#coming-soon)
+* [Future Plans](#future-plans)
 * [Usage](#usage)
 * [Creating a Block](#creating-a-block)
 
