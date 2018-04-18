@@ -7,12 +7,14 @@ const InspectorInput = ({
   label,
   onChange,
   type,
+  ...props
 }) => (
   <div className="components-base-control__field">
     <label htmlFor={name} className="components-base-control__label">
       {label}
     </label>
     <input
+      {...props}
       id={name}
       name={name}
       value={attributes[name]}

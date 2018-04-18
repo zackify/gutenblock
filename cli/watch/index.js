@@ -10,8 +10,18 @@ module.exports = () => {
       'Please make sure you are in the gutenblock directory :)'
     );
   }
-  serve({ config: config({ customConfig: loadCustomConfig() }) });
-  if (process.argv[3] !== 'docker') return;
+
+  //hacky port setting because needed asap, will refactor
+  let port =
+    process.argv[3] && process.argv[3] !== 'docker'
+      ? process.argv[3]
+      : undefined;
+
+  serve({
+    config: config({ customConfig: loadCustomConfig(), port }),
+  });
+
+  if (process.argv[3] !== 'docker' && process.argv[4] !== 'docker') return;
 
   const docker = spawn(`docker-compose`, [
     '-f',

@@ -1,7 +1,13 @@
 const path = require('path');
 const babelOptions = require('./babel-options');
 
-module.exports = ({ publicPath, production, serve, customConfig }) => {
+module.exports = ({
+  publicPath,
+  production,
+  serve,
+  customConfig,
+  port = 8080,
+}) => {
   let folders = process.cwd().split('/');
   let pluginFolderName = folders[folders.length - 1];
 
@@ -51,9 +57,10 @@ module.exports = ({ publicPath, production, serve, customConfig }) => {
       path: process.cwd() + '/build',
       publicPath: production
         ? `/wp-content/plugins/${pluginFolderName}/build/`
-        : 'http://localhost:8080/',
+        : `http://localhost:${port}/`,
     },
     serve: {
+      port,
       add: (app, middleware) => {
         app.use((ctx, next) => {
           ctx.set('Access-Control-Allow-Origin', '*');
@@ -62,7 +69,7 @@ module.exports = ({ publicPath, production, serve, customConfig }) => {
         middleware.webpack();
         middleware.content();
       },
-      dev: { publicPath: 'http://localhost:8080/' },
+      dev: { publicPath: `http://localhost:${port}/` },
     },
     module,
     ...customConfig,
