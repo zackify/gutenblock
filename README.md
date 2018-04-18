@@ -2,7 +2,7 @@
 
 * [Install](#install)
 * [Comparison with competition](#create-guten-block-vs-this)
-* [Coming Soon](#coming-soon)
+* [Future Plans](#future-plans)
 * [Usage](#usage)
 * [Creating a Block](#creating-a-block)
 
@@ -107,13 +107,10 @@ The configuration is the exact same as webpack with one extra piece: pass `babel
 
 # Future plans
 
-* Inspector tools for repeat actions (adding multiple items recursively, ex: tabs with products in each)
 * Automatic i18n
 * Complicated examples (tabs component, loading in data from wordpress)
 * Test coverage
 * Batch updates when updating nested tabs that cause lots of rerenders in Gutenberg
-
-Currently, we don't use wordpress to render blocks, so we don't use this. But I will be working to make this part better if needed.
 
 # Usage
 
