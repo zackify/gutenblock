@@ -50,7 +50,7 @@ module.exports = ({
   return {
     mode: production ? 'production' : 'development',
     context: __dirname,
-    entry: ['@babel/polyfill', process.cwd() + '/./index.js'],
+    entry: process.cwd() + '/./index.js',
     output: {
       chunkFilename: '[name].chunk.js',
       filename: '[name].js',
