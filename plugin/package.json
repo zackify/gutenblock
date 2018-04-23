@@ -13,6 +13,7 @@
   "author": "Crossfield",
   "license": "ISC",
   "dependencies": {
+    "@babel/polyfill": "^7.0.0-beta.46",
     "gutenblock-controls": "^0.2.1",
     "react": "^16.3.1",
     "react-hot-loader": "^4.0.1"

@@ -1,3 +1,5 @@
+import '@babel/polyfill';
+
 function importAll(r) {
   r.keys().forEach(r);
 }

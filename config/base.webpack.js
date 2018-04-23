@@ -28,7 +28,10 @@ module.exports = ({
         exclude: /node_modules/,
         use: [
           {
-            loader: require.resolve('./loader')(pluginFolderName),
+            loader: require.resolve('./loader'),
+            options: {
+              pluginFolderName,
+            },
           },
           {
             loader: require.resolve('babel-loader'),
