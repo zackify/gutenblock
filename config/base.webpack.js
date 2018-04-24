@@ -28,14 +28,20 @@ module.exports = ({
         exclude: /node_modules/,
         use: [
           {
+            loader: require.resolve('babel-loader'),
+            options: babelOptions,
+          },
+          {
+            loader: require.resolve('eslint-loader'),
+            options: {
+              configFile: require.resolve('./eslint.js'),
+            },
+          },
+          {
             loader: require.resolve('./loader'),
             options: {
               pluginFolderName,
             },
-          },
-          {
-            loader: require.resolve('babel-loader'),
-            options: babelOptions,
           },
         ],
       },

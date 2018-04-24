@@ -32,7 +32,7 @@ module.exports = function(source) {
       
       ${source}
 
-      Block.edit = props => wp.element.createElement(Import, {...props, load: () => import('./edit')});
+      Block.edit = props => <Import {...props} load={() => import('./edit')} />;
     
       if(!Block.save) Block.save = () => ''; 
       
