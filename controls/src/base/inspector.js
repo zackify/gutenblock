@@ -10,8 +10,8 @@ export default ({ children }) => (
         <InspectorControls>
           {React.Children.map(children, child =>
             React.cloneElement(child, {
-              setAttributes: data.setAttributes,
               attributes: data.attributes,
+              onChange: (name, value) => data.setAttributes({ [name]: value }),
             })
           )}
         </InspectorControls>

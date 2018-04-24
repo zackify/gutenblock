@@ -1,6 +1,6 @@
 {
   "name": "gutenblock-controls",
-  "version": "0.2.2",
+  "version": "0.3.4",
   "description": "Useful inspector controls for gutenberg",
   "main": "dist/index.js",
   "scripts": {
@@ -13,6 +13,7 @@
     "babel-cli": "^6.26.0"
   },
   "dependencies": {
-    "react-broadcast": "^0.7.0"
+    "react-broadcast": "^0.7.0",
+    "react-select": "^1.2.1"
   }
 }

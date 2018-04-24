@@ -91,7 +91,7 @@ export default class Repeat extends React.Component {
         attributes:
           attributes && attributes[attribute] && attributes[attribute][index]
             ? attributes[attribute][index]
-            : undefined,
+            : {},
         onChange: (name, value) =>
           this.update(name, value, index, onChange, child.onUpdate),
         onDelete: (childAttributes, childAttribute) =>

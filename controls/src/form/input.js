@@ -1,14 +1,6 @@
 import React from 'react';
 
-const InspectorInput = ({
-  attributes,
-  setAttributes,
-  name,
-  label,
-  onChange,
-  type,
-  ...props
-}) => (
+const Input = ({ name, type, label, onChange, attributes, ...props }) => (
   <div className="components-base-control__field">
     <label htmlFor={name} className="components-base-control__label">
       {label}
@@ -17,12 +9,12 @@ const InspectorInput = ({
       {...props}
       id={name}
       name={name}
-      value={attributes[name]}
       type={type || 'string'}
       className="components-text-control__input"
-      onChange={e => setAttributes({ [name]: e.target.value })}
+      value={attributes[name]}
+      onChange={e => onChange(name, e.target.value)}
     />
   </div>
 );
 
-export default InspectorInput;
+export default Input;
