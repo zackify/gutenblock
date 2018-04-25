@@ -67,7 +67,7 @@ const Edit = () => (
 );
 ```
 
-We've included a `Select` `MediaSelect` `Input` `Inspector` `Repeat` and other form fields to help you build blocks faster. A repeat component will handle the hard work of letting users add infinite items to an array of form fields, replacing items, and deleting them.
+We've included a `Select` `MediaSelect` `Input` `Inspector` `Repeat` and other form fields to help you build blocks faster. [A repeat](/plugin/src/example/inspector.js) component will handle the hard work of letting users add infinite items to an array of form fields, replacing items, and deleting them.
 
 The name field is the key in your gutenberg attributes defined in `block.js`. You can create your own inputs that connect and get access to `setAttributes` and `attributes`, no longer needing to pass them all over in your components. [See the example](/controls/src/form/rich-text.js)
 
