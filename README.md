@@ -10,7 +10,7 @@
 
 `npm install gutenblock -g`
 
-This is a plugin boilerplate + reusable inspector components + hot loading + code splits all built in for gutenberg.
+This is a **Gutenberg plugin creator** + reusable inspector components with **hot loading** and **code splits** built in.
 
 # Quickstart
 
