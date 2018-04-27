@@ -1,7 +1,7 @@
 # Contents
 
 * [Install](#install)
-* [Comparison with competition](#create-guten-block-vs-this)
+* [Comparison with competition](#comparison-with-other-tooling)
 * [Future Plans](#future-plans)
 * [Usage](#usage)
 * [Creating a Block](#creating-a-block)
@@ -10,7 +10,7 @@
 
 `npm install gutenblock -g`
 
-This is a plugin boilerplate + reusable inspector components + hot loading + code splits all built in for gutenberg.
+This is a **Gutenberg plugin creator** + reusable inspector components with **hot loading** and **code splits** built in.
 
 # Quickstart
 
@@ -22,23 +22,21 @@ If you have never done WordPress development, getting started couldn't be easier
 
 When you add `docker` on the end of the watch command, it will bring up WordPress for you. Simply create an account, install the Gutenberg plugin, and activate the blocks plugin. You're all set.
 
-# create-guten-block vs this
+# Comparison with other tooling
 
-[Create Guten Block](https://github.com/ahmadawais/create-guten-block) is another tool out there for making blocks.
+Currently, there is only one tool out there to help create blocks (that I have found so far). It's called [Create Guten Block](https://github.com/ahmadawais/create-guten-block). This library was inspired by it. I've added what I consider to be good defaults that *everyone* would want when creating blocks. These features are not included in other libraries by default:
 
-| Feature                                | CGB | This Package |
-| -------------------------------------- | :-: | -----------: |
-| Auto Block registration                | No  |          Yes |
-| Automated Attribute changing           | No  |          Yes |
-| Automatic code splitting               | No  |          Yes |
-| Hot reloading (without page reload)    | No  |          Yes |
-| Custom webpack config without ejection | No  |          Yes |
+- Auto Block registration             
+- Helper utlities         
+- Automatic code splitting               
+- Hot reloading (without page reload)    
+- Custom webpack config without ejection 
 
 **Auto Block registration**
 
-No need to call `registerBlockType` for wordpress. Our loader does this for you.
+No need to call `registerBlockType` for WordPress. Our loader does this for you.
 
-**Auto Attribute changing**
+**Helper utilities**
 
 Currently, when editing things in gutenberg you make components like this:
 
@@ -68,6 +66,8 @@ const Edit = () => (
   </div>
 );
 ```
+
+We've included a `Select` `MediaSelect` `Input` `Inspector` `Repeat` and other form fields to help you build blocks faster. [A repeat](/plugin/src/example/inspector.js) component will handle the hard work of letting users add infinite items to an array of form fields, replacing items, and deleting them.
 
 The name field is the key in your gutenberg attributes defined in `block.js`. You can create your own inputs that connect and get access to `setAttributes` and `attributes`, no longer needing to pass them all over in your components. [See the example](/controls/src/form/rich-text.js)
 
@@ -104,6 +104,8 @@ module.exports = {
 ```
 
 The configuration is the exact same as webpack with one extra piece: pass `babelOptions` with plugins and presets like a babelrc has to customize the babel loader.
+
+If you choose to extend the configuration, down the road a future webpack release may require you to make changes and update your configuration. If you do not extend anything, you'll never have to update any configuration in order to upgrade gutenblock! 
 
 # Future plans
 
