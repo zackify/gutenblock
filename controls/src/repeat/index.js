@@ -21,36 +21,27 @@ export default class Repeat extends React.Component {
     return null;
   }
 
-  update(name, value, tabId, parentChange, customUpdate) {
-    let { attribute, attributes, setAttributes } = this.props;
+  update(name, value, tabId, onChange) {
+    let { attribute, attributes } = this.props;
 
-    //if nested repeats, pass state up to top most one
-    if (parentChange) {
-      let currentAttributes = attributes[attribute] || [];
+    let currentAttributes = attributes[attribute] || [];
 
-      let foundAttribute = currentAttributes.find(
-        (attr, index) => index === tabId
+    let foundAttribute = currentAttributes.find(
+      (attr, index) => index === tabId
+    );
+    let newAttributes;
+    if (!foundAttribute)
+      newAttributes = [...currentAttributes, { [name]: value }];
+    else
+      newAttributes = currentAttributes.map(
+        (attr, index) => (index === tabId ? { ...attr, [name]: value } : attr)
       );
-      let newAttributes;
-      if (!foundAttribute)
-        newAttributes = [...currentAttributes, { [name]: value }];
-      else
-        newAttributes = currentAttributes.map(
-          (attr, index) => (index === tabId ? { ...attr, [name]: value } : attr)
-        );
 
-      return parentChange(attribute, newAttributes);
-    }
-
-    let topLevel = [...attributes[attribute]];
-
-    topLevel[tabId] = { ...topLevel[tabId], [name]: value };
-
-    setAttributes({ [attribute]: topLevel });
+    return onChange(attribute, newAttributes);
   }
 
-  delete(childAttributes, childAttribute, tabId, onDelete, customDelete) {
-    let { attribute, attributes, setAttributes } = this.props;
+  delete(childAttributes, childAttribute, tabId, onChange) {
+    let { attribute, attributes } = this.props;
 
     let newAttributes;
     if (!childAttributes)
@@ -68,9 +59,7 @@ export default class Repeat extends React.Component {
       );
     }
 
-    if (onDelete) return onDelete(newAttributes, attribute);
-
-    setAttributes({ [attribute]: newAttributes });
+    return onChange(attribute, newAttributes);
   }
 
   renderChildren(index) {
@@ -80,7 +69,6 @@ export default class Repeat extends React.Component {
       setAttributes,
       attributes,
       onChange,
-      onDelete,
     } = this.props;
 
     return React.Children.map(children, child =>
@@ -92,16 +80,9 @@ export default class Repeat extends React.Component {
           attributes && attributes[attribute] && attributes[attribute][index]
             ? attributes[attribute][index]
             : {},
-        onChange: (name, value) =>
-          this.update(name, value, index, onChange, child.onUpdate),
+        onChange: (name, value) => this.update(name, value, index, onChange),
         onDelete: (childAttributes, childAttribute) =>
-          this.delete(
-            childAttributes,
-            childAttribute,
-            index,
-            onDelete,
-            child.onDelete
-          ),
+          this.delete(childAttributes, childAttribute, index, onChange),
         style: {
           marginLeft: '10px',
           marginTop: '15px',

@@ -14,7 +14,7 @@
   "license": "ISC",
   "dependencies": {
     "@babel/polyfill": "^7.0.0-beta.46",
-    "gutenblock-controls": "^0.3.4",
+    "gutenblock-controls": "^0.3.5",
     "react": "^16.3.2",
     "react-dom": "^16.3.2",
     "react-hot-loader": "^4.0.1"

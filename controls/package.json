@@ -1,6 +1,6 @@
 {
   "name": "gutenblock-controls",
-  "version": "0.3.4",
+  "version": "0.3.5",
   "description": "Useful inspector controls for gutenberg",
   "main": "dist/index.js",
   "scripts": {
