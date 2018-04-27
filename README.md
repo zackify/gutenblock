@@ -24,13 +24,13 @@ When you add `docker` on the end of the watch command, it will bring up WordPres
 
 # Comparison with other tooling
 
-Currently, there is only one tool out there to help create blocks (that I have found so far). It's called [Create Guten Block](https://github.com/ahmadawais/create-guten-block). This library was inspired by it. I've added what I consider to be good defaults that *everyone* would want when creating blocks. These features are not included in other libraries by default:
+Currently, there is only one tool out there to help create blocks (that I have found so far). It's called [Create Guten Block](https://github.com/ahmadawais/create-guten-block). This library was inspired by it. I've added what I consider to be good defaults that _everyone_ would want when creating blocks. These features are not included in other libraries by default:
 
-- Auto Block registration             
-- Helper utlities         
-- Automatic code splitting               
-- Hot reloading (without page reload)    
-- Custom webpack config without ejection 
+* Auto Block registration
+* Helper utlities
+* Automatic code splitting
+* Hot reloading (without page reload)
+* Custom webpack config without ejection
 
 **Auto Block registration**
 
@@ -86,12 +86,13 @@ Add a `gutenblock.config.js` file in your blocks folder. It looks like this:
 ```js
 const path = require('path');
 
-module.exports = {
+module.exports = webpack => ({
   resolve: {
     alias: {
       shared: path.resolve(__dirname, '../src/shared'),
     },
   },
+  plugins: [new webpack.EnvironmentPlugin(['NODE_ENV'])],
   module: {
     rules: [
       {
@@ -100,12 +101,12 @@ module.exports = {
       },
     ],
   },
-};
+});
 ```
 
 The configuration is the exact same as webpack with one extra piece: pass `babelOptions` with plugins and presets like a babelrc has to customize the babel loader.
 
-If you choose to extend the configuration, down the road a future webpack release may require you to make changes and update your configuration. If you do not extend anything, you'll never have to update any configuration in order to upgrade gutenblock! 
+If you choose to extend the configuration, down the road a future webpack release may require you to make changes and update your configuration. If you do not extend anything, you'll never have to update any configuration in order to upgrade gutenblock!
 
 # Future plans
 
