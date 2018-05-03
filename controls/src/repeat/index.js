@@ -40,24 +40,12 @@ export default class Repeat extends React.Component {
     return onChange(attribute, newAttributes);
   }
 
-  delete(childAttributes, childAttribute, tabId, onChange) {
+  delete(tabId, onChange) {
     let { attribute, attributes } = this.props;
 
-    let newAttributes;
-    if (!childAttributes)
-      newAttributes = attributes[attribute].filter(
-        (attr, index) => index !== tabId
-      );
-
-    if (childAttributes) {
-      let newItem = {
-        ...attributes[attribute][tabId],
-        [childAttribute]: childAttributes,
-      };
-      newAttributes = attributes[attribute].map(
-        (item, index) => (index === tabId ? newItem : item)
-      );
-    }
+    let newAttributes = attributes[attribute].filter(
+      (attr, index) => index !== tabId
+    );
 
     return onChange(attribute, newAttributes);
   }
@@ -71,23 +59,30 @@ export default class Repeat extends React.Component {
       onChange,
     } = this.props;
 
-    return React.Children.map(children, child =>
-      React.cloneElement(child, {
-        key: index,
-        index,
-        setAttributes,
-        attributes:
-          attributes && attributes[attribute] && attributes[attribute][index]
-            ? attributes[attribute][index]
-            : {},
-        onChange: (name, value) => this.update(name, value, index, onChange),
-        onDelete: (childAttributes, childAttribute) =>
-          this.delete(childAttributes, childAttribute, index, onChange),
-        style: {
+    return (
+      <div
+        style={{
           marginLeft: '10px',
           marginTop: '15px',
-        },
-      })
+        }}
+      >
+        {React.Children.map(children, child =>
+          React.cloneElement(child, {
+            key: index,
+            index,
+            setAttributes,
+            attributes:
+              attributes &&
+              attributes[attribute] &&
+              attributes[attribute][index]
+                ? attributes[attribute][index]
+                : {},
+            onChange: (name, value) =>
+              this.update(name, value, index, onChange),
+          })
+        )}
+        <div onClick={() => this.delete(index, onChange)}>Delete item</div>
+      </div>
     );
   }
 
