@@ -155,7 +155,7 @@ const Block = {
 import { RichText } from 'gutenblock-controls';
 
 const Edit = () => (
-  <RichText tagName="p" name="body" style={{ color: 'white' }} />
+  <RichText tagName="p" name="body" style={{ color: 'black' }} />
 );
 ```
 
