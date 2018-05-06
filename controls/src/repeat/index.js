@@ -5,6 +5,7 @@ const { Button } = wp.components;
 export default class Repeat extends React.Component {
   constructor({ attribute, attributes }) {
     super();
+    this.add = this.add.bind(this);
     this.update = this.update.bind(this);
     this.delete = this.delete.bind(this);
 
@@ -19,6 +20,13 @@ export default class Repeat extends React.Component {
     if (items.length !== state.items) return { items: items.length };
 
     return null;
+  }
+
+  add() {
+    let { attribute, attributes, setAttributes } = this.props;
+    let items =
+        attributes && attributes[attribute] ? attributes[attribute] : [];
+    setAttributes({ [attribute]: [...items, {}] })
   }
 
   update(name, value, tabId, onChange) {
@@ -104,9 +112,15 @@ export default class Repeat extends React.Component {
             {max > items || !max ? (
               <Button
                 isPrimary
-                onClick={() => this.setState({ items: items + 1 })}
+                onClick={() => {
+                    this.setState(function (prevState, props) {
+                        return { items: prevState.items + 1 }
+                    }, () => {
+                        this.props.setAttributes && this.add();
+                    })
+                }}
               >
-                {addNew}
+              {addNew}
               </Button>
             ) : null}
           </div>
