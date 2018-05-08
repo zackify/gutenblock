@@ -2,41 +2,32 @@ import React from 'react';
 
 const { Button } = wp.components;
 
+let getItems = ({ attributes, attribute }) =>
+  attributes && attributes[attribute] ? attributes[attribute] : [];
+
 export default class Repeat extends React.Component {
-  constructor({ attribute, attributes }) {
+  constructor() {
     super();
     this.add = this.add.bind(this);
     this.update = this.update.bind(this);
     this.delete = this.delete.bind(this);
-
-    let items =
-      attributes && attributes[attribute] ? attributes[attribute] : [];
-    this.state = { items: items.length };
-  }
-
-  static getDerivedStateFromProps({ attributes, attribute }, state) {
-    let items =
-      attributes && attributes[attribute] ? attributes[attribute] : [];
-    if (items.length !== state.items) return { items: items.length };
-
-    return null;
   }
 
   add() {
-    let { attribute, attributes, setAttributes } = this.props;
-    let items =
-        attributes && attributes[attribute] ? attributes[attribute] : [];
-    setAttributes({ [attribute]: [...items, {}] })
+    let { attribute, onChange } = this.props;
+
+    onChange(attribute, [...getItems(this.props), {}]);
   }
 
   update(name, value, tabId, onChange) {
-    let { attribute, attributes } = this.props;
+    let { attribute } = this.props;
 
-    let currentAttributes = attributes[attribute] || [];
+    let currentAttributes = getItems(this.props);
 
     let foundAttribute = currentAttributes.find(
       (attr, index) => index === tabId
     );
+
     let newAttributes;
     if (!foundAttribute)
       newAttributes = [...currentAttributes, { [name]: value }];
@@ -95,8 +86,9 @@ export default class Repeat extends React.Component {
   }
 
   render() {
-    let { items } = this.state;
     let { style, title, indent, addNew, max } = this.props;
+
+    let items = getItems(this.props).length;
 
     let repeats = [];
     for (let item = 0; item < items; item++) {
@@ -110,17 +102,8 @@ export default class Repeat extends React.Component {
           {repeats}
           <div style={{ marginTop: '10px' }}>
             {max > items || !max ? (
-              <Button
-                isPrimary
-                onClick={() => {
-                    this.setState(function (prevState, props) {
-                        return { items: prevState.items + 1 }
-                    }, () => {
-                        this.props.setAttributes && this.add();
-                    })
-                }}
-              >
-              {addNew}
+              <Button isPrimary onClick={() => this.add()}>
+                {addNew}
               </Button>
             ) : null}
           </div>
