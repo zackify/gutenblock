@@ -1,5 +1,6 @@
 //Base
 export { default as Import } from './base/import';
+export { default as Editor } from './base/editor';
 export { Consumer as Context } from './base/context';
 export { default as Inspector } from './base/inspector';
 export { default as Attributes } from './base/attributes';
