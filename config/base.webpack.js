@@ -70,6 +70,7 @@ module.exports = ({
     },
     serve: {
       port,
+      host: '0.0.0.0',
       add: (app, middleware) => {
         app.use((ctx, next) => {
           ctx.set('Access-Control-Allow-Origin', '*');
