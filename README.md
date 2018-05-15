@@ -111,13 +111,13 @@ If you choose to extend the configuration, down the road a future webpack releas
 # Future plans
 
 * Automatic i18n
-* Complicated examples (tabs component, loading in data from wordpress)
+* Complicated examples (tabs component, loading in data from WordPress)
 * Test coverage
 * Batch updates when updating nested tabs that cause lots of rerenders in Gutenberg
 
 # Usage
 
-`gutenblock init` will scaffold out a wordpress plugin for you.
+`gutenblock init` will scaffold out a WordPress plugin for you.
 
 `gutenblock watch` inside the folder will start development mode. Copy the blocks folder into your plugins directory, or [use docker](https://gist.github.com/zackify/d8e428f93e018c3fbcce512414d02e62)
 
@@ -132,7 +132,7 @@ All blocks need a `block.js` and `edit.js`.
 `./src/paragraph/block.js`
 
 ```js
-//Optionally use a save block for static rendering on the wordpress frontend
+//Optionally use a save block for static rendering on the WordPress frontend
 
 import Save from './save';
 
@@ -165,10 +165,10 @@ const Edit = () => (
 export default ({ attributes }) => <p>{attributes.body}</p>;
 ```
 
-Side note: We don't use save blocks at Crossfield. This is because we fetch wordpress pages and posts via the api and render the blocks using a custom react frontend. Sadly, if you use save blocks, they will not be code split. This is a limitation of the gutenberg editor not supporting awaiting to render the save method.
+Side note: We don't use save blocks at Crossfield. This is because we fetch WordPress pages and posts via the api and render the blocks using a custom react frontend. Sadly, if you use save blocks, they will not be code split. This is a limitation of the gutenberg editor not supporting awaiting to render the save method.
 
 No registering blocks, importing them into a root folder. It's all done for you.
 
-Now we can run `gutenblock watch` inside our plugin folder. Inside wordpress the components will hot reload as you edit, thanks to [react-hot-loader](https://github.com/gaearon/react-hot-loader)
+Now we can run `gutenblock watch` inside our plugin folder. Inside WordPress the components will hot reload as you edit, thanks to [react-hot-loader](https://github.com/gaearon/react-hot-loader)
 
 You can read more about the [Block API](https://wordpress.org/gutenberg/handbook/block-api/)
