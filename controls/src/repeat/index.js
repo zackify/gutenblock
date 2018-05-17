@@ -56,6 +56,7 @@ export default class Repeat extends React.Component {
       setAttributes,
       attributes,
       onChange,
+      deleteButton,
     } = this.props;
 
     return (
@@ -80,13 +81,17 @@ export default class Repeat extends React.Component {
               this.update(name, value, index, onChange),
           })
         )}
-        <div onClick={() => this.delete(index, onChange)}>Delete item</div>
+        {deleteButton ? (
+          deleteButton(() => this.delete(index, onChange))
+        ) : (
+          <div onClick={() => this.delete(index, onChange)}>Delete item</div>
+        )}
       </div>
     );
   }
 
   render() {
-    let { style, title, indent, addNew, max } = this.props;
+    let { style, title, indent, addNew, max, createButton } = this.props;
 
     let items = getItems(this.props).length;
 
@@ -102,9 +107,13 @@ export default class Repeat extends React.Component {
           {repeats}
           <div style={{ marginTop: '10px' }}>
             {max > items || !max ? (
-              <Button isPrimary onClick={() => this.add()}>
-                {addNew}
-              </Button>
+              createButton ? (
+                createButton(() => this.add())
+              ) : (
+                <Button isPrimary onClick={() => this.add()}>
+                  {addNew}
+                </Button>
+              )
             ) : null}
           </div>
         </div>
