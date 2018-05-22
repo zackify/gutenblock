@@ -87,6 +87,15 @@ Add a `gutenblock.config.js` file in your blocks folder. It looks like this:
 const path = require('path');
 
 module.exports = webpack => ({
+  //customize gutenblock options if needed
+  gutenblock: {
+    devHost: 'localhost',
+    devPort: 8080,
+    //build asset output path relative to the plugin directory
+    outputPath: '/test',
+    //when building the plugin, gutenblock will default to the folder name inside wp-content, if you have a different wp-content folder you can change it here
+    publicPath: `/app/plugins/blocks/test/`,
+  },
   resolve: {
     alias: {
       shared: path.resolve(__dirname, '../src/shared'),

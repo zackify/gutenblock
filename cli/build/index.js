@@ -17,9 +17,8 @@ module.exports = () => {
   console.log('Building...');
 
   webpack(customConfig, (err, stats) => {
-    if (err || stats.hasErrors()) {
-      console.error(err);
-    }
+    if (err) console.error(err);
+
     console.log('Done!');
   });
 };

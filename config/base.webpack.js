@@ -20,6 +20,10 @@ module.exports = ({
     delete customConfig.babelOptions;
   }
 
+  let gutenblock = customConfig.gutenblock;
+  delete customConfig.gutenblock;
+  port = gutenblock.devPort || port;
+
   //merge custom rules
   let module = {
     rules: [
@@ -63,14 +67,15 @@ module.exports = ({
     output: {
       chunkFilename: '[name].chunk.js',
       filename: '[name].js',
-      path: process.cwd() + '/build',
+      path: process.cwd() + (gutenblock.outputPath || '/build'),
       publicPath: production
-        ? `/wp-content/plugins/${pluginFolderName}/build/`
+        ? gutenblock.publicPath ||
+          `/wp-content/plugins/${pluginFolderName}/build/`
         : `http://localhost:${port}/`,
     },
     serve: {
       port,
-      host: '0.0.0.0',
+      host: gutenblock.devHost || '0.0.0.0',
       add: (app, middleware) => {
         app.use((ctx, next) => {
           ctx.set('Access-Control-Allow-Origin', '*');
