@@ -1,6 +1,6 @@
 import { Async } from 'react-select';
 
-export default ({ loadOptions, name, onChange, attributes, onDelete }) => (
+export default ({ loadOptions, name, onChange, attributes }) => (
   <Async
     style={{ marginTop: '5px' }}
     name={name}

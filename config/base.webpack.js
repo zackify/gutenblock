@@ -20,8 +20,12 @@ module.exports = ({
     delete customConfig.babelOptions;
   }
 
-  let gutenblock = customConfig.gutenblock;
+  let gutenblock = customConfig.gutenblock || {};
   delete customConfig.gutenblock;
+
+  let serveConfig = customConfig.serve || {};
+  delete customConfig.serve;
+
   port = gutenblock.devPort || port;
 
   //merge custom rules
@@ -85,6 +89,7 @@ module.exports = ({
         middleware.content();
       },
       dev: { publicPath: `http://localhost:${port}/` },
+      ...serveConfig,
     },
     module,
     ...customConfig,
