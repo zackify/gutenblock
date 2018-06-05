@@ -75,7 +75,7 @@ module.exports = ({
       publicPath: production
         ? gutenblock.publicPath ||
           `/wp-content/plugins/${pluginFolderName}/build/`
-        : `http://localhost:${port}/`,
+        : `${serveConfig.https ? 'https' : 'http'}://localhost:${port}/`,
     },
     serve: {
       port,
