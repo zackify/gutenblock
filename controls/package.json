@@ -1,6 +1,6 @@
 {
   "name": "gutenblock-controls",
-  "version": "0.5.3",
+  "version": "0.6.0",
   "description": "Useful inspector controls for gutenberg",
   "main": "dist/index.js",
   "scripts": {
@@ -8,7 +8,11 @@
   },
   "author": "Zach Silveira",
   "license": "ISC",
-  "keywords": ["Gutenberg", "Wordpress", "Inspector"],
+  "keywords": [
+    "Gutenberg",
+    "Wordpress",
+    "Inspector"
+  ],
   "devDependencies": {
     "babel-cli": "^6.26.0"
   },

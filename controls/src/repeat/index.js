@@ -1,4 +1,5 @@
 import React from 'react';
+import Item from './item';
 
 const { Button } = wp.components;
 
@@ -8,6 +9,7 @@ let getItems = ({ attributes, attribute }) =>
 export default class Repeat extends React.Component {
   constructor() {
     super();
+
     this.add = this.add.bind(this);
     this.update = this.update.bind(this);
     this.delete = this.delete.bind(this);
@@ -25,7 +27,7 @@ export default class Repeat extends React.Component {
     let currentAttributes = getItems(this.props);
 
     let foundAttribute = currentAttributes.find(
-      (attr, index) => index === tabId
+      (attr, index) => index === tabId,
     );
 
     let newAttributes;
@@ -33,7 +35,7 @@ export default class Repeat extends React.Component {
       newAttributes = [...currentAttributes, { [name]: value }];
     else
       newAttributes = currentAttributes.map(
-        (attr, index) => (index === tabId ? { ...attr, [name]: value } : attr)
+        (attr, index) => (index === tabId ? { ...attr, [name]: value } : attr),
       );
 
     return onChange(attribute, newAttributes);
@@ -43,7 +45,7 @@ export default class Repeat extends React.Component {
     let { attribute, attributes } = this.props;
 
     let newAttributes = attributes[attribute].filter(
-      (attr, index) => index !== tabId
+      (attr, index) => index !== tabId,
     );
 
     return onChange(attribute, newAttributes);
@@ -57,52 +59,64 @@ export default class Repeat extends React.Component {
       attributes,
       onChange,
       deleteButton,
+      collapsable,
+      title,
     } = this.props;
 
+    let component = child =>
+      React.cloneElement(child, {
+        key: index,
+        index,
+        setAttributes,
+        attributes:
+          attributes && attributes[attribute] && attributes[attribute][index]
+            ? attributes[attribute][index]
+            : {},
+        onChange: (name, value) => this.update(name, value, index, onChange),
+      });
+    let [first, ...restOfChildren] = children;
+
     return (
-      <div
-        style={{
-          marginLeft: '10px',
-          marginTop: '15px',
-        }}
+      <Item
+        title={title}
+        collapsable={collapsable}
+        first={component(first)}
+        deleteButton={
+          deleteButton ? (
+            deleteButton(() => this.delete(index, onChange))
+          ) : (
+            <div onClick={() => this.delete(index, onChange)}>Delete item</div>
+          )
+        }
       >
-        {React.Children.map(children, child =>
-          React.cloneElement(child, {
-            key: index,
-            index,
-            setAttributes,
-            attributes:
-              attributes &&
-              attributes[attribute] &&
-              attributes[attribute][index]
-                ? attributes[attribute][index]
-                : {},
-            onChange: (name, value) =>
-              this.update(name, value, index, onChange),
-          })
-        )}
-        {deleteButton ? (
-          deleteButton(() => this.delete(index, onChange))
-        ) : (
-          <div onClick={() => this.delete(index, onChange)}>Delete item</div>
-        )}
-      </div>
+        <div
+          style={{
+            marginLeft: '10px',
+            marginTop: '15px',
+          }}
+        >
+          {React.Children.map(collapsable ? restOfChildren : children, child =>
+            component(child),
+          )}
+        </div>
+      </Item>
     );
   }
 
   render() {
-    let { style, title, indent, addNew, max, createButton } = this.props;
+    let { style, title, addNew, max, createButton, collapsable } = this.props;
 
     let items = getItems(this.props).length;
 
     let repeats = [];
+
     for (let item = 0; item < items; item++) {
       repeats.push(this.renderChildren(item));
     }
 
     return (
       <div style={style}>
-        <h1>{title}</h1>
+        {collapsable ? null : <h1>{title}</h1>}
         <div>
           {repeats}
           <div style={{ marginTop: '10px' }}>
