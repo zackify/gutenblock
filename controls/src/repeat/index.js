@@ -80,7 +80,7 @@ export default class Repeat extends React.Component {
       <Item
         title={title}
         collapsable={collapsable}
-        first={component(first)}
+        first={collapsable ? component(first) : null}
         deleteButton={
           deleteButton ? (
             deleteButton(() => this.delete(index, onChange))
