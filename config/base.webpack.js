@@ -69,7 +69,7 @@ module.exports = ({
     context: __dirname,
     entry: process.cwd() + '/./index.js',
     output: {
-      chunkFilename: '[name].chunk.js',
+      chunkFilename: '[name].[chunkhash].chunk.js',
       filename: '[name].js',
       path: process.cwd() + (gutenblock.outputPath || '/build'),
       publicPath: production
