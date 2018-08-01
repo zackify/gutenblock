@@ -1,10 +1,10 @@
 # Contents
 
-* [Install](#install)
-* [Comparison with competition](#comparison-with-other-tooling)
-* [Future Plans](#future-plans)
-* [Usage](#usage)
-* [Creating a Block](#creating-a-block)
+- [Install](#install)
+- [Comparison with competition](#comparison-with-other-tooling)
+- [Future Plans](#future-plans)
+- [Usage](#usage)
+- [Creating a Block](#creating-a-block)
 
 # Install
 
@@ -16,9 +16,9 @@ This is a **Gutenberg plugin creator** + reusable inspector components with **ho
 
 If you have never done WordPress development, getting started couldn't be easier.
 
-* [Install Docker](https://store.docker.com/search?type=edition&offering=community)
-* `gutenblock init && cd blocks`
-* `gutenblock watch docker`
+- [Install Docker](https://store.docker.com/search?type=edition&offering=community)
+- `gutenblock init && cd blocks`
+- `gutenblock watch docker`
 
 When you add `docker` on the end of the watch command, it will bring up WordPress for you. Simply create an account, install the Gutenberg plugin, and activate the blocks plugin. You're all set.
 
@@ -26,11 +26,11 @@ When you add `docker` on the end of the watch command, it will bring up WordPres
 
 Currently, there is only one tool out there to help create blocks (that I have found so far). It's called [Create Guten Block](https://github.com/ahmadawais/create-guten-block). This library was inspired by it. I've added what I consider to be good defaults that _everyone_ would want when creating blocks. These features are not included in other libraries by default:
 
-* Auto Block registration
-* Helper utlities
-* Automatic code splitting
-* Hot reloading (without page reload)
-* Custom webpack config without ejection
+- Auto Block registration
+- Helper utlities
+- Automatic code splitting
+- Hot reloading (without page reload)
+- Custom webpack config without ejection
 
 **Auto Block registration**
 
@@ -41,7 +41,7 @@ No need to call `registerBlockType` for WordPress. Our loader does this for you.
 Currently, when editing things in gutenberg you make components like this:
 
 ```js
-const { RichText } = wp.blocks;
+const { RichText } = wp.editor;
 
 export default ({ setAttributes, attributes }) => (
   <div>
@@ -119,10 +119,10 @@ If you choose to extend the configuration, down the road a future webpack releas
 
 # Future plans
 
-* Automatic i18n
-* Complicated examples (tabs component, loading in data from WordPress)
-* Test coverage
-* Batch updates when updating nested tabs that cause lots of rerenders in Gutenberg
+- Automatic i18n
+- Complicated examples (tabs component, loading in data from WordPress)
+- Test coverage
+- Batch updates when updating nested tabs that cause lots of rerenders in Gutenberg
 
 # Usage
 
