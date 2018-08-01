@@ -1,4 +1,4 @@
-const { InspectorControls } = wp.blocks;
+const { InspectorControls } = wp.editor;
 import { Consumer } from './context';
 
 // Todo, use react context vs map when we add other inspector controls :)

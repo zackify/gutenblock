@@ -1,5 +1,5 @@
 const { Button } = wp.components;
-const { MediaUpload } = wp.blocks;
+const { MediaUpload } = wp.editor;
 
 export default ({ name, attributes, onChange, beforeChange, label }) => (
   <div style={{ display: 'flex' }}>

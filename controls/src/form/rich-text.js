@@ -1,4 +1,4 @@
-const { RichText } = wp.blocks;
+const { RichText } = wp.editor;
 import { Consumer } from '../base/context';
 
 const RichTextWrapper = ({ name, tagName, attributes = {}, ...props }) => (
