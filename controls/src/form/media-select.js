@@ -3,7 +3,7 @@ const { MediaUpload } = wp.editor;
 
 export default ({ name, attributes, onChange, beforeChange, label, ...props }) => (
   <div style={{ display: 'flex' }}>
-    {attributes[name] ? (
+    {attributes[name] && !beforeChange ? (
       <img src={attributes[name]} style={{ height: 10, marginRight: 5, alignSelf: 'center' }} />
     ) : null}
     <MediaUpload
